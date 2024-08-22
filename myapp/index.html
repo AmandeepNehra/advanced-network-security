@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your stylesheet -->
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+
+    <!-- Display error messages if present -->
+    <?php if (isset($_GET['error'])): ?>
+        <p style="color: red;">
+            <?php 
+            if ($_GET['error'] == 'invalid_password') {
+                echo 'Invalid password. Please try again.';
+            } elseif ($_GET['error'] == 'not_admin') {
+                echo 'You do not have admin privileges.';
+            } elseif ($_GET['error'] == 'no_user') {
+                echo 'No user found with that username.';
+            } else {
+                echo 'An unknown error occurred.';
+            }
+            ?>
+        </p>
+    <?php endif; ?>
+
+    <div class="login-signup">
+        <h2>Login</h2>
+        <form action="login.html" method="get">
+            <button type="submit">Go to Login</button>
+        </form>
+    </div>
+
+    <div class="signup">
+        <h2>Signup</h2>
+        <form action="signup.html" method="get">
+            <button type="submit">Go to Signup</button>
+        </form>
+    </div>
+
+    <div class="admin-login">
+        <h2>Admin Login</h2>
+        <form action="admin_login.html" method="get">
+            <button type="submit">Go to Admin Login</button>
+        </form>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .login-signup, .signup, .admin-login {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Login</h1>
+
+    <!-- Display error message if present -->
+    <?php if (isset($_GET['error'])): ?>
+        <p style="color: red;">
+            <?php 
+            if ($_GET['error'] == 'invalid_password') {
+                echo 'Invalid password. Please try again.';
+            } elseif ($_GET['error'] == 'not_admin') {
+                echo 'You do not have admin privileges.';
+            } elseif ($_GET['error'] == 'no_user') {
+                echo 'No user found with that username.';
+            } else {
+                echo 'An unknown error occurred.';
+            }
+            ?>
+        </p>
+    <?php endif; ?>
+
+    <form action="admin_login.php" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p>Return to <a href="index.html">Home</a></p>
+</body>
+</html>
